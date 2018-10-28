@@ -23,8 +23,22 @@ The package provides helpful hints while editing the /requirements.txt/ file in 
 The idea for Emacs-package came to me while I was reading an article comparing Emacs and PyCharm and one of the "pros" of PyCharm was it ability to tell you when a package from requirements.txt is missing and to install it for you. So there you go, Emacs has now has that feature too!
 \\
 For easy /requirements.txt/ editing I also recommend the [[https://github.com/Wilfred/pip-requirements.el][pip-requirements]] package. It provides minor mode and auto-completion for the packages in your /requirements.txt/ file.
+\\
+
+*** Screenshots
+
+[[file:./screenshot/package.png]]          [[file:./screenshot/packages-highlighted.png]]
+
 
 ** Installation
+Currently the project is not on [[https://melpa.org/][Melpa]] so you'll have to download it and loaded in your init file manually. Just clone the repository
+#+BEGIN_EXAMPLE
+git clone https://github.com/palikar/python-requirements-installer
+#+END_EXAMPLE
+and put something like
+#+BEGIN_SRC emacs-lisp
+(load "/your/path/to/pir.el")
+#+END_SRC
 
 *** Dependencies
 
@@ -36,12 +50,12 @@ The package provides a minor mode -- ~pri-mode~ -- that gets automatically added
 \\
 The provided by the packge keybindings are on their own key-map -- ~pri-mode-map~. The default prefix key is ~C-c -~ and it is customizable. The provided for now functions are given in the following table.
 
-| Keybinding   | Function               | Description                                                                             |
-|--------------+------------------------+-----------------------------------------------------------------------------------------|
-|--------------+------------------------+-----------------------------------------------------------------------------------------|
-| ~<prefix> v~ | ~pri-check-packages~   | Checks all of the packages in a requirements.txt file and annotates them appropriately. |
-| ~<prefix> i~ | ~pri-install-packages~ | Goes over the uninstalled packages and prompts you to install each of them.             |
-| ~<prefix> c~ | ~pri-clear-checks~     | Clears the annotations created by ~pri-check-packages~                                  |
+| Keybinding   | Function               | Description                                                                                |
+|--------------+------------------------+--------------------------------------------------------------------------------------------|
+|--------------+------------------------+--------------------------------------------------------------------------------------------|
+| ~<prefix> v~ | ~pri-check-packages~   | Checks all of the packages in a requirements.txt file<br>and annotates them appropriately. |
+| ~<prefix> i~ | ~pri-install-packages~ | Goes over the uninstalled packages and prompts you to<br>install each of them.             |
+| ~<prefix> c~ | ~pri-clear-checks~     | Clears the annotations created by ~pri-check-packages~                                     |
 
 
-Each time you save a /requirements.txt/ file _and_ the  ~pri-mode~ is active, the ~pri-check-packages~ function will be called.
+Each time you save a /requirements.txt/ file _and_ the  ~pri-mode~ is active, the ~pri-check-packages~ function will be called. You'll be therefore frequently notify about the missing and present /pip/ packages.

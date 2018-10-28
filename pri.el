@@ -164,5 +164,5 @@ has name 'requirements.txt'"
 (add-to-list 'auto-mode-alist '("\\requirements.txt\\'" . pri-mode))
 
 
-(provide 'ov)
+(provide 'pri)
 ;;; pri.el ends here
