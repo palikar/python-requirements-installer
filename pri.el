@@ -66,7 +66,7 @@ It should be in the form of kbd."
    (string= (file-name-nondirectory (buffer-file-name)) "requirements.txt")
    (bound-and-true-p pri-mode)))
 
-(defun pri-package-exists (package)
+(defun pri--package-exists (package)
   "Check if the given package is available.
 The package can be available either globally in the system or in
 the current virtuealenv.
@@ -98,7 +98,7 @@ PACKAGE - the name of the package to check"
         (let* ((line (buffer-substring (point) (line-end-position))))
           (unless (or (string-match "^\s*#.*" line)
                       (= (length (string-trim line)) 0))
-            (if (not (pri-package-exists line))
+            (if (not (pri--package-exists line))
                 (ov-set (ov-line) 'face 'warning)
               (ov-set (ov-line) 'face 'success))))
         (forward-line)
@@ -124,7 +124,7 @@ PACKAGE - the name of the package to check"
         (insert install-buffer-banner))
       (dolist (line lines)
         (if (and (not (= (length line) 0))
-                 (not (pri-package-exists line))
+                 (not (pri--package-exists line))
                  (yes-or-no-p (format "%s is not installed. Install it?" line)))
             (progn
               (display-buffer pip-buffer t)
