@@ -91,7 +91,6 @@ PACKAGE - the name of the package to check"
   "Cheks the packages in the buffer."
   (interactive)
   (when (pri--check-buffer--and--file)
-    (pri-check-packages)
     (save-excursion
       (goto-char (point-min))
       (while (/= (point) (point-max))
@@ -126,7 +125,7 @@ PACKAGE - the name of the package to check"
       (dolist (line lines)
         (if (and (not (= (length line) 0))
                  (not (pri-package-exists line))
-                 (yes-or-no-p (format "%s is not installed. Intall it?" line)))
+                 (yes-or-no-p (format "%s is not installed. Install it?" line)))
             (progn
               (display-buffer pip-buffer t)
               (with-current-buffer pip-buffer
