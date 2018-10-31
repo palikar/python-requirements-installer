@@ -4,5 +4,4 @@
 
 
 (depends-on "ov")
- (depends-on "subr-x")
 
